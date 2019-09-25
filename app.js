@@ -66,7 +66,7 @@ function handleInboundSms(request, response) {
 
 const port = 3000;
 
-const server = app.listen(port, () => console.log(`Server started on port ${port}`));
+const server = app.listen(proccess.env.port || port, () => console.log(`Server started on port ${port}`));
 
 // Connect to socket.io
 const io = socketio(server);

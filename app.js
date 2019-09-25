@@ -25,8 +25,6 @@ app.get('/', (req, res) => {
 
 //catch from submit 
 app.post('/', (req, res) => {
-    //res.send(req.body);
-    //console.log(req.body);
     const number = req.body.number;
     const text = req.body.text;
 
@@ -54,6 +52,17 @@ app.post('/', (req, res) => {
     )
 
 })
+
+app
+  .route('/webhooks/inbound-sms')
+  .get(handleInboundSms)
+  .post(handleInboundSms)
+
+function handleInboundSms(request, response) {
+  const params = Object.assign(request.query, request.body)
+  console.log(params)
+  response.status(204).send()
+}
 
 const port = 3000;
 
